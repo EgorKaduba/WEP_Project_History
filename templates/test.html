@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Сетка карточек -->
+<div class="container-fluid" style="padding-top: 20px;">
+    <div class="row" style="row-gap: 20px;">
+        <div class="col-md-auto">
+            <div class="list-group">
+                <a href="/" class="list-group-item list-group-item-action active" aria-current="true">
+                    Текущий элемент ссылка
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">Второй элемент ссылка</a>
+                <a href="#" class="list-group-item list-group-item-action">Третий элемент ссылка</a>
+                <a href="#" class="list-group-item list-group-item-action">Четвертый элемент ссылка</a>
+                <a class="list-group-item list-group-item-action">Отключенный элемент ссылка</a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="container-md-auto">
+                <div class="row" style="row-gap: 20px;">
+                    {% for t in range(res|length)%}
+                    <div class="col-md-auto">
+                        <div class="card h-100" style="width: 18rem;">
+                            <img src="{{url_for('static', filename='images/' + res[t][2])}}" class="card-img-top"
+                                 alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ res[t][0] }}</h5>
+                                <p class="card-text">{{res[t][1]}}</p>
+                                <a href="#" class="btn btn-primary" style="margin-top: auto;">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
