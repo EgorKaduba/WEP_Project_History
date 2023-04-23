@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Информация о ресурсе -->
+<div class="container">
+    {% if res|length >= 3 and res[2] not in ('main-concepts.png', 'main-date.png', 'main-people.png')%}
+    <p align="center" style="padding-top: 20px;">
+        <img src="{{url_for('static', filename='images/' + res[2])}}" height="450">
+    </p>
+    {% endif %}
+    <h1 align="center">{{ res[0] }}</h1>
+    {% if res[4] %}
+    <h3 align="center">{{ res[4] }}</h3>
+    {% endif %}
+    {% for t in res[1] %}
+    <p align="justify">{{ t }}</p>
+    {% endfor %}
+    {% if res[3] %}
+    <div id="carouselExampleControls" class="carousel slide container" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{url_for('static', filename='images/' + res[3][0])}}" class="d-block w-100"
+                     alt="...">
+            </div>
+            {% for t in res[3][1:] %}
+            <div class="carousel-item">
+                <img src="{{url_for('static', filename='images/' + t)}}" class="d-block w-100" alt="...">
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Предыдущий</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Следующий</span>
+        </button>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -10,7 +10,7 @@ class Personalities(SqlAlchemyBase, SerializerMixin):
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True, nullable=False)
     title = sqlalchemy.Column(sqlalchemy.String, nullable=False)
-    content = sqlalchemy.Column(sqlalchemy.String, nullable=False)
+    content = sqlalchemy.Column(sqlalchemy.LargeBinary, nullable=False)
     title_image = sqlalchemy.Column(sqlalchemy.String, nullable=True, default="main-people.png")
     content_image = sqlalchemy.Column(sqlalchemy.String, nullable=True)
 

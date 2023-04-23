@@ -1,5 +1,42 @@
 .card-body {
-display: flex;
-flex-direction: column;
-align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.container-fluid {
+    padding-top: 20px;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: danger;
+}
+footer > a {
+    padding-right: 25px;
+    padding-left: 25 px;
+    color: white;
+}
+.ss.is-visible{
+    display: block;
+}
+.d-none{
+    display: none;
+}
+.order{
+    padding-top: 20px;
+}
+.show-more{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.card-img-top{
+    object-fit: cover;
+    height: 270px;
+}
+.carousel {
+   width:640px;
+   height:360px;
+   margin-bottom: 100px !important;
 }
