@@ -49,3 +49,6 @@ footer > a {
 .foot{
     height: 50px;
 }
+.res > p {
+	font-size: 125%;
+}
