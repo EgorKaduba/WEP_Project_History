@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- Информация о ресурсе -->
-<div class="container">
+<div class="container res">
     {% if res|length >= 3 and res[2] not in ('main-concepts.png', 'main-date.png', 'main-people.png')%}
     <p align="center" style="padding-top: 20px;">
         <img src="{{url_for('static', filename='images/' + res[2])}}" height="450">
