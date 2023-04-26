@@ -9,7 +9,7 @@
 footer {
     display: flex;
     justify-content: center;
-    padding: 5px;
+    padding: 10px;
     background-color: danger;
 }
 footer > a {
@@ -39,4 +39,13 @@ footer > a {
    width:640px;
    height:360px;
    margin-bottom: 100px !important;
+}
+.navbar-brand, .nav-link {
+    color: white;
+}
+.main {
+	min-height: calc(100vh - 106px);
+}
+.foot{
+    height: 50px;
 }

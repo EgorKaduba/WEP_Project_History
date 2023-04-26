@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,7 +15,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <title>{{ title }}</title>
 </head>
-<body style="background-color: rgba(255, 97, 97, 0.2);">
+<body style="background-color: rgba(255, 97, 97, 0.2); height: 100%">
 <!-- Begin page content -->
 <header style="max-width: 100%;">
     <nav class="navbar navbar-expand-lg bg-danger">
@@ -55,19 +55,21 @@
     </nav>
 </header>
 <div>
-    {% block content %}{% endblock %}
-    <div class="bg-danger">
-        <footer>
-            <a href="/">
-                <img src="{{url_for('static', filename='images/main-application.png')}}" alt="Histore" width="40"
-                     height="30">
-            </a>
-            <a href="/">Главная</a>
-            <a href="/main/personalities">Личности</a>
-            <a href="/main/events_dates">События и даты</a>
-            <a href="/main/concepts">Понятия</a>
-        </footer>
-    </div>
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+</div>
+<div class="bg-danger foot">
+    <footer>
+        <a href="/">
+            <img src="{{url_for('static', filename='images/main-application.png')}}" alt="Histore" width="40"
+                 height="30">
+        </a>
+        <a href="/">Главная</a>
+        <a href="/main/personalities">Личности</a>
+        <a href="/main/events_dates">События и даты</a>
+        <a href="/main/concepts">Понятия</a>
+    </footer>
 </div>
 </body>
 </html>

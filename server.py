@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, flash
+from flask import Flask, redirect, render_template, request, flash, url_for
 from requests import get, post
 from flask_restful import Api
 from random import shuffle
@@ -20,7 +20,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 app.config['UPLOAD_FOLDER'] = './static/images'
 api = Api(app)
-db_session.global_init("db/history.db")
+db_session.global_init('db/history.db')
 logging.basicConfig(
     filename='example.log',
     format='%(asctime)s %(levelname)s %(name)s %(message)s'
@@ -32,7 +32,7 @@ logging.basicConfig(
 def main():
     # Если пользователь нажал на кнопку "Поиск", вызываем функция поиска по всем ресурсам, иначе выводим все ресурсы
     if request.method == "POST":
-        logging.info('Request: %r', request.json)
+        logging.info('Request: %r', request.form.get('text'))
         search_text = request.form.get('text')
         res = main_tools.search_all(search_text)
         if not res:
@@ -49,7 +49,7 @@ def group_list(group):
     # Если пользователь нажал на кнопку "Поиск", вызываем функция поиска по всем ресурсам определенной группы,
     # иначе выводим все ресурсы этой группы
     if request.method == "POST":
-        logging.info('Request: %r', request.json)
+        logging.info('Request: %r', request.form.get('text'))
         search_text = request.form.get('text')
         res = main_tools.search_group(group, search_text)
         if not res:
@@ -63,7 +63,7 @@ def group_list(group):
 @app.route('/main/<string:group>/<int:id>', methods=['GET', 'POST'])
 def resourse_info(group, id):
     if request.method == "POST":
-        logging.info('Request: %r', request.json)
+        logging.info('Request: %r', request.form.get('text'))
         search_text = request.form.get('text')
         res = main_tools.search_group(group, search_text)
         if not res:
@@ -77,7 +77,7 @@ def resourse_info(group, id):
 def post_form():
     form = LoginForm()
     if form.validate_on_submit():
-        logging.info('Request: %r', request.json)
+        logging.info('Request: %r', request.form.get('text'))
         try:
             validate_csrf(form.csrf_token.data)
         except ValidationError:

@@ -57,13 +57,13 @@ def search_all(searh_text):
         ss = list()
         a = list(i in '1234567890' for i in searh_text)
         if all(a):
-            dat = requests.get(f"http://127.0.0.1:8080/api/dates/date/{searh_text}").json()
+            dat = requests.get(f"https://e3f7-46-236-191-178.ngrok-free.app/api/dates/date/{searh_text}").json()
             ss.append(dat)
         a = list(i not in '1234567890' for i in searh_text)
         if all(a):
-            con = requests.get(f"http://127.0.0.1:8080/api/concepts/title/{searh_text}").json()
-            per = requests.get(f"http://127.0.0.1:8080/api/personalities/title/{searh_text}").json()
-            event = requests.get(f"http://127.0.0.1:8080/api/events/title/{searh_text}").json()
+            con = requests.get(f"https://e3f7-46-236-191-178.ngrok-free.app/api/concepts/title/{searh_text}").json()
+            per = requests.get(f"https://e3f7-46-236-191-178.ngrok-free.app/api/personalities/title/{searh_text}").json()
+            event = requests.get(f"https://e3f7-46-236-191-178.ngrok-free.app/api/events/title/{searh_text}").json()
             ss = [con, per, event]
         for t in ss:
             if t == con:

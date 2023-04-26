@@ -60,8 +60,6 @@ class DatesResourse(Resource):
         for i in date_list:
             date_s = i.date.split('-')
             if len(date_s) == 1:
-                print(1)
-                print(dates)
                 if int(date_s[0]) == int(dates):
                     ls.append(i.to_dict(only=('title', 'title_image', 'content_image', 'id')))
             elif len(date_s) == 2:
@@ -81,11 +79,10 @@ class EventsDatesListResourse(Resource):
         db_sess = db_session.create_session()
         event_d = db_sess.query(EventsDates).all()
         res = {
-            'events_dates': [item.to_dict(only=('title', 'date', 'content', 'title_image', 'content_image', 'id')) for
-                             item in
-                             event_d]
+            'events_dates': [item.to_dict(only=('title', 'date', 'title_image', 'content_image', 'id')) for
+                             item in event_d]
         }
-        for item, i in zip(res["concepts"], event_d):
+        for item, i in zip(res["events_dates"], event_d):
             item["content"] = zlib.decompress(i.content).decode()
         return jsonify(res)
 
